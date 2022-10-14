@@ -1,0 +1,53 @@
+<html>
+<head>
+<script>
+function isChar(evt)
+{
+	evt = (evt) ? : window.event;
+	var charCode = (evt.which) ? evt.which : evt.keyCode;
+	
+	//for character
+	if(charCode>31 && (charCode<65 || charCode>128))
+	{
+		alert("Enter only character");
+		return false;
+	}
+	
+	//for number
+	if(charCode>31 && (charCode<48 || charCode>57))
+	{
+		alert("Enter only number");
+		return false;
+	}
+}
+
+//conatact number
+var mobile=document.forms["frm"] ["mobil"].value;
+
+if(mobile=null || mobile="")
+{
+	alert("Enter contact number");
+	return false;
+}
+
+//email address
+var x=document.forms["frm"] ["email"].value;
+
+var atpos = x.indexOf("@");
+var dotpos = x.lastIndexOf(".");
+
+if(atpos<1 || dotpos<atpos+2 || dotpos+2>x.length)
+{
+	alert("Enter valid Email id");
+	return false;
+}
+</script>
+</head>
+<body>
+<form method="post">
+<input type="text" name="uname" onKeyPress="return isChar(event)"/>
+<input type="text" name="mobil"/>
+<input type="text" name="email"/>
+</form>
+</body>
+</html>
